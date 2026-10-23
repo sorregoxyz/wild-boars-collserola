@@ -1,0 +1,51 @@
+date,foci_total,foci_primary,foci_secondary,new_positive_cases,positives_cumulative,municipalities_with_cases,negatives_cumulative,negatives_captured_or_hunted_no_symptoms,negatives_passive_surveillance,total_analyzed,new_cases_detection,notes
+28/11/25,2,2,0,2,2,1,,,,,"2 cadáveres frescos hallados (campus UAB, Cerdanyola)",Primera detección. Sin datos de negativos.
+2/12/25,3,2,1,7,9,1,,,,,7 casos en búsqueda activa de cadáveres,Positivos acumulados no indicados; 9 = 2 + 7. Sin datos de negativos.
+4/12/25,5,2,3,4,13,,37,,,50,Método no especificado,Negativos = animales muertos hallados en la zona; sin desglose.
+12/12/25,7,2,5,3,16,,115,,,131,Método no especificado,"Negativos = muertos en el medio, carreteras o vías férreas; sin desglose."
+16/12/25,9,2,7,10,26,,175,,,201,Método no especificado,"Negativos = muertos en el medio, carreteras o vías férreas; sin desglose."
+19/12/25,10,3,7,1,27,,201,,,228,1 animal sintomático abatido,Negativos = capturados o hallados muertos; sin desglose.
+29/12/25,11,3,8,2,29,,262,,,291,2 hallados muertos,Negativos = hallados muertos; sin desglose.
+5/01/26,13,3,10,18,47,,530,234,296,577,18 hallados muertos,Primer desglose. Categoría 'capturados en trampas'.
+12/01/26,15,3,12,13,60,,622,300,322,682,13 hallados muertos,Categoría 'capturados'.
+23/01/26,20,3,17,25,85,,749,404,345,834,25 hallados muertos,Categoría 'capturados'.
+29/01/26,23,3,20,18,103,,833,468,365,936,18 hallados muertos,Categoría 'capturados'. Negativos 'a PCR'.
+6/02/26,26,3,23,39,142,,938,549,389,1080,39 capturados o hallados muertos,Categoría 'capturados'.
+13/02/26,29,3,26,13,155,6,1048,624,424,1203,13 hallados muertos o restos,Categoría 'capturados'.
+17/02/26,31,3,28,7,162,7,1112,661,451,1274,7 hallados muertos,Categoría 'capturados'.
+26/02/26,34,3,31,33,195,7,1433,942,491,1628,"33 hallados muertos, restos o abatidos con sintomatología compatible",Categoría pasa a 'capturados o abatidos sin sintomatología cllínica'.
+5/03/26,37,3,34,21,216,8,1708,1176,532,1924,"21 hallados muertos, restos o abatidos",
+12/03/26,38,3,35,11,227,9,1971,1408,563,2198,11 hallados muertos o restos,
+19/03/26,40,3,37,5,232,10,2179,1408,601,2411,5 hallados muertos (1 por colisión con vehículo),"INCOHERENCIA: 1.408 + 601 = 2.009, no 2.179; la cifra de capturados parece copiada del informe anterior (cuadraría con 1.578). Área pasa a 'zonas restringidas y sus alrededores'."
+26/03/26,41,3,38,6,238,10,2441,1794,650,2679,6 hallados muertos,"INCOHERENCIA: 1.794 + 650 = 2.444, no 2.441."
+1/04/26,42,3,39,3,241,10,2804,2108,696,3045,3 hallados muertos,
+9/04/26,44,3,41,11,252,11,3136,2396,740,3388,11 cadáveres y restos,
+16/04/26,45,3,42,16,268,11,3409,2630,779,3677,16 cadáveres y restos,
+22/04/26,47,3,44,16,284,12,3746,2936,810,4030,Método no especificado,Primer caso en Castellbisbal.
+28/04/26,,,,,,,,,,,,Solo actualización de zonificación (Reg. Ejecución UE 2026/985); sin cifras.
+30/04/26,48,3,45,13,297,12,4181,3326,855,4478,Mayoría cadáveres y restos; 2 capturados (transecto y trampa pig-brig),
+7/05/26,49,3,46,9,306,12,4552,3644,908,4858,9 cadáveres y restos,
+14/05/26,50,3,47,14,320,13,4934,3965,969,5254,14 cadáveres y restos,Primer caso en Esplugues de Llobregat.
+21/05/26,51,3,48,2,322,13,5226,4229,997,5548,2 cadáveres y/o restos,
+28/05/26,52,3,49,3,325,13,5658,4598,1060,5983,3 cadáveres y restos,
+4/06/26,54,3,51,11,336,13,6060,4947,1113,6396,"Cadáveres, restos y 1 colisión de tráfico",
+11/06/26,55,3,52,6,342,13,6445,5288,1157,6787,"Cadáveres, restos y 2 capturados sin síntomas",
+18/06/26,56,3,53,2,344,13,7010,5806,1204,7354,"1 hallado muerto, 1 capturado",
+25/06/26,58,3,55,11,355,13,7538,6279,1259,7893,"Cadáveres, restos, 1 abatido con sintomatología y 1 colisión de tráfico",
+2/07/26,59,3,56,3,358,13,7966,6665,1301,8324,Cadáveres y 1 capturado sin sintomatología,
+9/07/26,61,3,58,6,364,13,8560,7186,1374,8924,6 cadáveres y restos,
+16/07/26,63,3,60,4,368,13,8989,7576,1413,9357,3 capturados y restos de 1 cadáver,
+23/07/26,64,3,61,4,372,13,9465,8019,1446,9837,3 hallados muertos/restos y 1 capturado,
+30/07/26,65,3,62,1,373,13,9879,8375,1504,10252,Restos de 1 cadáver,
+6/08/26,66,3,63,2,375,13,10325,8765,1560,10700,"1 abatido en transecto, 1 cadáver",
+13/08/26,67,3,64,4,379,13,10650,9044,1606,11029,"Cadáveres, restos y 1 colisión con vehículo",
+20/08/26,67,3,64,0,379,13,10952,9298,1654,11331,Sin casos nuevos,
+27/08/26,67,3,64,0,379,13,11197,9488,1709,11576,Sin casos nuevos,Segunda semana sin casos.
+3/09/26,68,3,65,5,384,13,11391,9636,1755,11775,5 restos de cadáveres,
+10/09/26,69,3,66,2,386,13,11891,10089,1802,12277,2 restos de cadáveres,
+17/09/26,70,3,67,5,391,13,12287,10421,1866,12678,5 restos de cadáveres,
+24/09/26,71,3,68,5,396,13,12740,10845,1895,13136,"4 restos de cadáveres, 1 colisión de tráfico",
+1/10/26,72,3,69,4,400,13,13141,11186,1955,13541,4 restos de cadáveres,
+8/10/26,73,3,70,9,409,13,13500,11483,2017,13909,9 restos de cadáveres,
+15/10/26,74,3,71,1,410,13,13700,11647,2053,14110,Restos de 1 cadáveres,
+22/10/26,77,3,74,9,419,13,14077,11990,2087,14496,9 restos de cadáveres,El texto dice 'desde el 8 de octubre' pero el informe anterior es del 15; las cifras cuadran (410 + 9 = 419).
