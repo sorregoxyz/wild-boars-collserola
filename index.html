@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collserola, One by One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #21272C;
+    --ink: #E0EAF2;
+    --pos: #00AA93;
+    --pas: #FFB511;
+    --cap: #F15060;
+    --unc: #BB76CF;
+    --muted: #9AA6B0;
+    --type: 0.80;   /* text size: 1 = original, smaller number = smaller text */
+    --d: 16px;      /* dot diameter */
+    --g: 3.4px;     /* dot gap */
+    --datecol: 172px;
+    --serif: "IBM Plex Serif", Georgia, serif;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+  body.locked { overflow: hidden; }
+  .wrap { max-width: 1235px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 700px) { .wrap { padding: 0 24px; } }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+  /* Header */
+  header.wrap { padding-top: clamp(56px, 9vw, 112px); }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  h1 { font-family: var(--serif); font-weight: 500; font-size: calc(clamp(40px, 6vw, 68px) * var(--type)); line-height: 1.05; margin: 0 0 14px; letter-spacing: -0.01em; }
+  .lang { display: flex; border: 1.5px solid var(--ink); margin-top: 10px; flex: none; }
+  .lang button { font-family: var(--serif); font-weight: 600; font-size: calc(14px * var(--type)); padding: 2px 7px; }
+  .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  .intro { font-size: calc(clamp(16px, 1.6vw, 20px) * var(--type)); line-height: 1.7; margin: 0; font-weight: 400; max-width: 75em; }
+  .intro b { font-weight: 600; }
+
+  /* Rules */
+  .rule { border: 0; border-top: 2px solid var(--ink); margin: 0; }
+
+  /* Conventions */
+  .conventions { padding-top: 20px; padding-bottom: 18px; }
+  .conventions h2 { font-family: var(--serif); font-weight: 700; font-size: calc(20px * var(--type)); margin: 0 0 4px 6px; }
+  .legend { list-style: none; margin: 0; padding: 0 0 0 clamp(0px, 7.5vw, 94px); }
+  .legend li { position: relative; padding-left: 28px; font-size: calc(16px * var(--type)); line-height: 1.5; }
+  .legend li::before { content: ""; position: absolute; left: 0; top: .25em; width: 1.1em; height: 1.1em; border-radius: 50%; background: var(--c); }
+  .legend b { font-family: var(--serif); font-weight: 700; font-size: calc(17px * var(--type)); margin-right: 6px; }
+
+  /* Tabs */
+  .tabs { display: flex; align-items: stretch; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs-label { font-family: var(--serif); font-weight: 600; font-size: calc(18px * var(--type)); padding: 0 20px; display: flex; align-items: center; flex: none; }
+  .tab { font-weight: 500; font-size: calc(17px * var(--type)); line-height: 1.1; padding: 14px 18px; min-height: 74px; text-align: left; flex: 1 1 0; min-width: 120px; }
+  .tab:hover { background: rgba(224,234,242,.08); }
+  .tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+  .tab:focus-visible, .lang button:focus-visible, .note-btn:focus-visible { outline: 2px solid var(--pas); outline-offset: -2px; }
+
+  /* Chronological view */
+  #chrono { padding: 16px 0 36px; }
+  .row { display: grid; grid-template-columns: var(--datecol) 1fr; align-items: start; margin-bottom: 11px; }
+  .date { font-family: var(--serif); font-weight: 700; font-size: calc(20px * var(--type)); line-height: var(--d); display: flex; align-items: center; gap: 8px; white-space: nowrap; height: var(--d); }
+  .date .dash { width: 32px; border-top: 2px solid var(--ink); flex: none; }
+  .note-btn { font-family: var(--serif); font-weight: 700; font-size: calc(12px * var(--type)); line-height: 1; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--ink); display: inline-grid; place-items: center; padding: 0; flex: none; margin-left: -2px; }
+  .dots { display: flex; flex-wrap: wrap; gap: var(--g); }
+  .dots i { display: block; width: var(--d); height: var(--d); border-radius: 50%; background: var(--c); transition: filter .12s; }
+  .dots i.sp { background: transparent; }
+  .seg { display: contents; }
+  .seg[data-c="pos"] i { --c: var(--pos); }
+  .seg[data-c="pas"] i { --c: var(--pas); }
+  .seg[data-c="cap"] i { --c: var(--cap); }
+  .seg[data-c="unc"] i { --c: var(--unc); }
+  .seg.hl i { filter: brightness(.58); }
+  .empty { font-size: calc(15px * var(--type)); color: var(--muted); font-style: italic; line-height: var(--d); }
+
+  /* Colophon */
+  footer { padding: 22px 0 80px; }
+  footer h2 { font-family: var(--serif); font-weight: 700; font-size: calc(20px * var(--type)); margin: 0 0 14px; }
+  .colo { display: grid; gap: 28px; grid-template-columns: 1fr; font-size: calc(15px * var(--type)); line-height: 1.6; }
+  @media (min-width: 900px) { .colo { grid-template-columns: 1fr 1.4fr; } }
+  .colo h3 { font-family: var(--serif); font-weight: 600; font-size: calc(16px * var(--type)); margin: 0 0 6px; }
+  .colo p { margin: 0 0 12px; }
+  .colo ul { margin: 0; padding-left: 0; list-style: none; }
+  .colo li { margin-bottom: 8px; }
+  .colo li b { font-family: var(--serif); font-weight: 600; }
+  .colo a { color: var(--ink); }
+
+  /* Tooltip */
+  #tip { position: fixed; z-index: 50; pointer-events: none; background: var(--ink); color: var(--bg); font-family: var(--serif); font-weight: 600; font-size: calc(17px * var(--type)); line-height: 1.35; padding: 7px 12px 7px 12px; border-radius: 4px; max-width: min(420px, 90vw); opacity: 0; transition: opacity .1s; box-shadow: 0 4px 18px rgba(0,0,0,.35); }
+  #tip.on { opacity: 1; }
+  #tip .sw { display: inline-block; width: 15px; height: 15px; border-radius: 50%; vertical-align: -2px; margin-right: 8px; }
+  #tip .note { font-family: var(--sans); font-weight: 400; font-size: calc(15px * var(--type)); }
+
+  /* Category overlay */
+  #overlay { position: fixed; inset: 0; z-index: 40; background: var(--bg); overflow-y: auto; clip-path: inset(100% 0 0 0); visibility: hidden; transition: clip-path .75s cubic-bezier(.7,0,.2,1), visibility 0s .75s; }
+  #overlay.open { clip-path: inset(0 0 0 0); visibility: visible; transition: clip-path .75s cubic-bezier(.7,0,.2,1), visibility 0s; }
+  .ov-bar { position: sticky; top: 0; z-index: 2; background: var(--bg); }
+  .ov-bar-in { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 2px solid var(--ink); }
+  .ov-name { font-family: var(--serif); font-weight: 700; font-size: calc(18px * var(--type)); display: flex; align-items: center; gap: 10px; }
+  .ov-name i { width: 18px; height: 18px; border-radius: 50%; background: var(--c); }
+  .ov-close { font-weight: 500; font-size: calc(16px * var(--type)); padding: 6px 12px; border: 1.5px solid var(--ink); }
+  .ov-close:hover { background: var(--ink); color: var(--bg); }
+  .ov-head { text-align: center; padding: 28px 0 22px; }
+  .ov-num { font-family: var(--serif); font-weight: 500; font-size: calc(clamp(64px, 11vw, 150px) * var(--type)); line-height: 1; letter-spacing: -0.01em; }
+  .ov-label { font-size: calc(clamp(17px, 2vw, 24px) * var(--type)); margin-top: 8px; }
+  .ov-sub { font-size: calc(14px * var(--type)); color: var(--muted); margin-top: 6px; }
+  #ovDots { padding-bottom: 60px; }
+
+  @media (max-width: 700px) {
+    :root { --d: 9px; --g: 2px; --datecol: 104px; }
+    header.wrap { padding-top: 48px; }
+    .date { font-size: calc(13px * var(--type)); gap: 5px; }
+    .date .dash { width: 14px; }
+    .note-btn { width: 13px; height: 13px; font-size: calc(9px * var(--type)); }
+    .row { margin-bottom: 7px; }
+    .tab { font-size: calc(15px * var(--type)); min-height: 60px; padding: 10px 12px; }
+    .tabs-label { font-size: calc(15px * var(--type)); padding: 0 12px 0 4px; }
+    .legend li { font-size: calc(15px * var(--type)); }
+    #tip { font-size: calc(15px * var(--type)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #overlay, #overlay.open { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="top">
+    <h1 data-t="title"></h1>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+  <p class="intro" id="intro"></p>
+</header>
+
+<div class="wrap" style="margin-top:26px"><hr class="rule"></div>
+
+<section class="wrap conventions">
+  <h2 data-t="conventions"></h2>
+  <ul class="legend" id="legend"></ul>
+</section>
+
+<div class="wrap"><hr class="rule"></div>
+<div class="wrap">
+  <nav class="tabs" role="tablist" id="tabs">
+    <span class="tabs-label" data-t="explore"></span>
+    <button class="tab" role="tab" data-view="chrono" aria-selected="true" data-t="chrono"></button>
+    <button class="tab" role="tab" data-view="pos" aria-selected="false"></button>
+    <button class="tab" role="tab" data-view="pas" aria-selected="false"></button>
+    <button class="tab" role="tab" data-view="cap" aria-selected="false"></button>
+    <button class="tab" role="tab" data-view="unc" aria-selected="false"></button>
+  </nav>
+</div>
+<div class="wrap"><hr class="rule"></div>
+
+<main class="wrap">
+  <div id="chrono"></div>
+</main>
+
+<div class="wrap"><hr class="rule"></div>
+<footer class="wrap">
+  <h2 data-t="colophon"></h2>
+  <div class="colo" id="colo"></div>
+</footer>
+
+<div id="overlay" role="dialog" aria-modal="true" aria-labelledby="ovName">
+  <div class="ov-bar"><div class="wrap"><div class="ov-bar-in">
+    <span class="ov-name" id="ovNameWrap"><i></i><span id="ovName"></span></span>
+    <button class="ov-close" id="ovClose" type="button"></button>
+  </div></div></div>
+  <div class="wrap ov-head">
+    <div class="ov-num" id="ovNum"></div>
+    <div class="ov-label" id="ovLabel"></div>
+    <div class="ov-sub" id="ovSub"></div>
+  </div>
+  <div class="wrap"><div class="dots" id="ovDots"></div></div>
+</div>
+
+<div id="tip" role="tooltip"></div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const CATS = ["pos", "pas", "cap", "unc"];
+  const COLORS = { pos: "var(--pos)", pas: "var(--pas)", cap: "var(--cap)", unc: "var(--unc)" };
+
+  const T = {
+    en: {
+      title: "Collserola, One by One",
+      intro: (d) => `Since African swine fever was detected in Collserola in November 2025, Spain’s Ministry of Agriculture has published a weekly update with the number of wild boars tested for the virus. This piece adds them up. Each mark is one boar, found dead in the forest or captured and killed as part of the depopulation around the fenced outbreak. As of ${d.date}, there are <b>${d.total}</b>. <b>${d.pos}</b> carried the virus; almost all of them were found as carcasses or remains. The other <b>${d.neg}</b> tested negative, and <b>${d.cap}</b> of those were healthy animals killed without symptoms. The count grows with every new report and will stop only when the killing does.`,
+      conventions: "Conventions",
+      explore: "Explore data",
+      chrono: "Chronologically",
+      close: "Close ×",
+      colophon: "Colophon",
+      noFigures: "No figures in this report",
+      boar: (n) => n === 1 ? "1 wild boar" : `${n} wild boars`,
+      reportOf: (d) => `Report of ${d}`,
+      cat: {
+        pos: { name: "Positive", tab: "Positive", desc: "Confirmed ASF cases (“casos/jabalíes positivos”).", big: "Wild boars that tested positive" },
+        pas: { name: "Passive surveillance", tab: "Passive surveillance", desc: "Negative. Carcasses, remains or animals shot with symptoms (“vigilancia pasiva”).", big: "Wild boars found dead or sick that tested negative" },
+        cap: { name: "Captured or shot without symptoms", tab: "Captured or shot, no symptoms", desc: "Negative. Healthy animals removed as part of population reduction (“capturados o abatidos sin sintomatología clínica”).", big: "Wild boars killed without symptoms" },
+        unc: { name: "Unclassified", tab: "Unclassified", desc: "Negative. Reported before 5 January 2026, without a category.", big: "Wild boars that tested negative, category not reported" },
+      },
+      ovSub: (first, last) => `${first} to ${last} · one mark per boar · gaps separate reports`,
+      colo: (d) => `
+        <div>
+          <h3>Source</h3>
+          <p>Ministerio de Agricultura, Pesca y Alimentación (MAPA), “Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña”, ${d.n} reports, ${d.first} to ${d.last}. <a href="https://www.mapa.gob.es/es/ganaderia/temas/sanidad-animal-higiene-ganadera/sanidad-animal/enfermedades/peste-porcina-africana/peste_porcina_africana" target="_blank" rel="noopener">MAPA, African swine fever</a>.</p>
+          <h3>Method</h3>
+          <p>Each report gives running totals “to date”. This piece shows what each report adds to the previous one. Report dates are irregular until March 2026 and weekly after that. Negatives are counted in the restricted zones and, from 19 March 2026, also “their surroundings”.</p>
+          <h3>Credits</h3>
+          <p>Research and design: [name]. Data and code: [repository].</p>
+        </div>
+        <div>
+          <h3>Notes on the reports</h3>
+          <ul>${d.notes}</ul>
+        </div>`,
+    },
+    es: {
+      title: "Collserola, uno a uno",
+      intro: (d) => `Desde que se detectó la peste porcina africana en Collserola en noviembre de 2025, el Ministerio de Agricultura publica una actualización semanal con el número de jabalíes analizados. Esta pieza los suma. Cada marca es un jabalí, hallado muerto en el bosque o capturado y abatido como parte de la despoblación alrededor del brote vallado. A fecha de ${d.date}, son <b>${d.total}</b>. <b>${d.pos}</b> portaban el virus; casi todos se encontraron como cadáveres o restos. Los otros <b>${d.neg}</b> dieron negativo, y <b>${d.cap}</b> de ellos eran animales sanos abatidos sin síntomas. El recuento crece con cada nuevo informe y solo se detendrá cuando cese la matanza.`,
+      conventions: "Convenciones",
+      explore: "Explorar datos",
+      chrono: "Cronológicamente",
+      close: "Cerrar ×",
+      colophon: "Colofón",
+      noFigures: "Este informe no incluye cifras",
+      boar: (n) => n === 1 ? "1 jabalí" : `${n} jabalíes`,
+      reportOf: (d) => `Informe del ${d}`,
+      cat: {
+        pos: { name: "Positivos", tab: "Positivos", desc: "Casos confirmados de PPA (“casos/jabalíes positivos”).", big: "Jabalíes que dieron positivo" },
+        pas: { name: "Vigilancia pasiva", tab: "Vigilancia pasiva", desc: "Negativos. Cadáveres, restos o animales abatidos con síntomas (“vigilancia pasiva”).", big: "Jabalíes hallados muertos o enfermos que dieron negativo" },
+        cap: { name: "Capturados o abatidos sin síntomas", tab: "Capturados o abatidos, sin síntomas", desc: "Negativos. Animales sanos retirados como parte de la reducción de la población (“capturados o abatidos sin sintomatología clínica”).", big: "Jabalíes abatidos sin síntomas" },
+        unc: { name: "Sin clasificar", tab: "Sin clasificar", desc: "Negativos. Notificados antes del 5 de enero de 2026, sin categoría.", big: "Jabalíes que dieron negativo, sin categoría notificada" },
+      },
+      ovSub: (first, last) => `${first} a ${last} · una marca por jabalí · los espacios separan informes`,
+      colo: (d) => `
+        <div>
+          <h3>Fuente</h3>
+          <p>Ministerio de Agricultura, Pesca y Alimentación (MAPA), “Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña”, ${d.n} informes, del ${d.first} al ${d.last}. <a href="https://www.mapa.gob.es/es/ganaderia/temas/sanidad-animal-higiene-ganadera/sanidad-animal/enfermedades/peste-porcina-africana/peste_porcina_africana" target="_blank" rel="noopener">MAPA, peste porcina africana</a>.</p>
+          <h3>Método</h3>
+          <p>Cada informe da totales acumulados “hasta la fecha”. Esta pieza muestra lo que cada informe añade al anterior. Las fechas de los informes son irregulares hasta marzo de 2026 y semanales después. Los negativos se cuentan en las zonas restringidas y, desde el 19 de marzo de 2026, también en “sus alrededores”.</p>
+          <h3>Créditos</h3>
+          <p>Investigación y diseño: [nombre]. Datos y código: [repositorio].</p>
+        </div>
+        <div>
+          <h3>Notas sobre los informes</h3>
+          <ul>${d.notes}</ul>
+        </div>`,
+    },
+  };
+
+  // ---------- Data: cumulative figures -> what each report adds ----------
+  const reports = [];
+  let pPos = 0, pNeg = 0, cumUnc = 0, cumCap = 0, cumPas = 0;
+  for (const r of window.REPORTS) {
+    const add = { pos: 0, pas: 0, cap: 0, unc: 0 };
+    if (r.pos != null) { add.pos = r.pos - pPos; pPos = r.pos; }
+    if (r.cap != null && r.pas != null) {
+      const pas = r.pas - cumUnc;           // passive excluding earlier unclassified negatives
+      add.cap = r.cap - cumCap; add.pas = pas - cumPas;
+      cumCap = r.cap; cumPas = pas; pNeg = r.cap + r.pas;
+    } else if (r.neg != null) {
+      add.unc = r.neg - pNeg; cumUnc += add.unc; pNeg = r.neg;
+    }
+    for (const c of CATS) if (add[c] < 0) { console.warn("Negative increment", r.date, c, add[c]); add[c] = 0; }
+    const [y, m, d] = r.date.split("-");
+    reports.push({ ...r, label: `${d}.${m}.${y}`, add, hasFigures: r.pos != null || r.neg != null });
+  }
+  const totals = { pos: 0, pas: 0, cap: 0, unc: 0 };
+  reports.forEach(r => CATS.forEach(c => totals[c] += r.add[c]));
+  const lastWithFigures = [...reports].reverse().find(r => r.hasFigures);
+
+  // ---------- Helpers ----------
+  let lang = "en";
+  try { const s = localStorage.getItem("collserola-lang"); if (s === "es" || s === "en") lang = s; } catch (e) {}
+  const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, lang === "es" ? "." : ",");
+  const longDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(lang === "es" ? "es-ES" : "en-GB", { day: "numeric", month: "long", year: "numeric" });
+  const $ = (s) => document.querySelector(s);
+  const dotsHTML = (n) => "<i></i>".repeat(n);
+
+  // ---------- Static text ----------
+  function renderText() {
+    const t = T[lang];
+    document.documentElement.lang = lang;
+    document.title = t.title;
+    document.querySelectorAll("[data-t]").forEach(el => { el.textContent = t[el.dataset.t]; });
+    document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    document.querySelectorAll(".tab[data-view]").forEach(b => { if (b.dataset.view !== "chrono") b.textContent = t.cat[b.dataset.view].tab; });
+    $("#ovClose").textContent = t.close;
+
+    $("#intro").innerHTML = t.intro({
+      date: longDate(lastWithFigures.date),
+      total: fmt(totals.pos + totals.pas + totals.cap + totals.unc),
+      pos: fmt(totals.pos),
+      neg: fmt(totals.pas + totals.cap + totals.unc),
+      cap: fmt(totals.cap),
+    });
+
+    $("#legend").innerHTML = CATS.map(c => `<li style="--c:${COLORS[c]}"><b>${t.cat[c].name}</b>${t.cat[c].desc}</li>`).join("");
+
+    const notes = reports.filter(r => r.note).map(r => `<li><b>${r.label}</b> ${r.note[lang]}</li>`).join("");
+    $("#colo").innerHTML = t.colo({ n: reports.length, first: reports[0].label, last: reports[reports.length - 1].label, notes });
+  }
+
+  // ---------- Chronological view ----------
+  function renderChrono() {
+    const t = T[lang];
+    const order = ["pos", "pas", "cap", "unc"];
+    $("#chrono").innerHTML = reports.map((r, i) => {
+      const note = r.note ? `<button class="note-btn" type="button" data-note="${i}" aria-label="Note">*</button>` : "";
+      const segs = order.filter(c => r.add[c] > 0)
+        .map(c => `<span class="seg" data-r="${i}" data-c="${c}">${dotsHTML(r.add[c])}</span>`).join("");
+      const body = segs ? `<div class="dots">${segs}</div>` : `<div class="empty">${r.hasFigures ? "" : t.noFigures}</div>`;
+      return `<div class="row"><div class="date"><span>${r.label}</span><span class="dash"></span>${note}</div>${body}</div>`;
+    }).join("");
+  }
+
+  // ---------- Tooltip ----------
+  const tip = $("#tip");
+  let activeSeg = null;
+  function showTip(html, x, y) {
+    tip.innerHTML = html;
+    tip.classList.add("on");
+    const w = tip.offsetWidth, h = tip.offsetHeight;
+    let left = x + 14, top = y - h - 12;
+    if (left + w > innerWidth - 8) left = Math.max(8, x - w - 14);
+    if (top < 8) top = y + 18;
+    tip.style.left = left + "px"; tip.style.top = top + "px";
+  }
+  function hideTip() {
+    tip.classList.remove("on");
+    if (activeSeg) { activeSeg.forEach(el => el.classList.remove("hl")); activeSeg = null; }
+  }
+  function segTip(seg) {
+    const t = T[lang], r = reports[+seg.dataset.r], c = seg.dataset.c;
+    return `<span class="sw" style="background:${COLORS[c]}"></span>${t.boar(r.add[c]).replace(/^\d+/, m => fmt(+m))} · ${t.cat[c].name} · ${t.reportOf(r.label)}`;
+  }
+  function handlePointer(e) {
+    const seg = e.target.closest && e.target.closest(".seg");
+    const noteBtn = e.target.closest && e.target.closest(".note-btn");
+    if (noteBtn) {
+      const r = reports[+noteBtn.dataset.note];
+      hideTip(); showTip(`${r.label}<br><span class="note">${r.note[lang]}</span>`, e.clientX, e.clientY);
+      return;
+    }
+    if (!seg) { hideTip(); return; }
+    const key = seg.dataset.r + seg.dataset.c;
+    if (!activeSeg || activeSeg.key !== key) {
+      hideTip();
+      const scope = seg.closest("#ovDots") ? "#ovDots" : "#chrono";
+      activeSeg = [...document.querySelectorAll(`${scope} .seg[data-r="${seg.dataset.r}"][data-c="${seg.dataset.c}"]`)];
+      activeSeg.key = key;
+      activeSeg.forEach(el => el.classList.add("hl"));
+    }
+    showTip(segTip(seg), e.clientX, e.clientY);
+  }
+  ["#chrono", "#ovDots"].forEach(sel => {
+    const el = $(sel);
+    el.addEventListener("mousemove", handlePointer);
+    el.addEventListener("mouseleave", hideTip);
+    el.addEventListener("click", handlePointer); // touch screens
+  });
+  document.addEventListener("scroll", hideTip, { passive: true });
+  $("#overlay").addEventListener("scroll", hideTip, { passive: true });
+
+  // ---------- Category overlay ----------
+  const overlay = $("#overlay");
+  let lastTab = null, currentView = "chrono";
+  function setSelected(view) {
+    document.querySelectorAll(".tab[data-view]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.view === view)));
+  }
+  function renderOverlay(c) {
+    const t = T[lang];
+    $("#ovNameWrap").style.setProperty("--c", COLORS[c]);
+    $("#ovName").textContent = t.cat[c].name;
+    $("#ovNum").textContent = fmt(totals[c]);
+    $("#ovLabel").textContent = t.cat[c].big;
+    const withData = reports.filter(r => r.add[c] > 0);
+    $("#ovSub").textContent = withData.length ? t.ovSub(withData[0].label, withData[withData.length - 1].label) : "";
+    // one gap (transparent mark) between reports keeps the weekly rhythm visible
+    $("#ovDots").innerHTML = reports.map((r, i) => r.add[c] > 0 ? `<span class="seg" data-r="${i}" data-c="${c}">${dotsHTML(r.add[c])}</span>` : "")
+      .filter(Boolean).join('<i class="sp"></i>');
+  }
+  function openOverlay(c, btn) {
+    currentView = c; lastTab = btn;
+    renderOverlay(c);
+    setSelected(c);
+    overlay.scrollTop = 0;
+    // start the reveal at the tab's bottom edge so the panel rises from the button
+    const y = Math.max(0, Math.min(innerHeight, btn.getBoundingClientRect().bottom));
+    overlay.style.transition = "none";
+    overlay.style.clipPath = `inset(${y}px 0 0 0)`;
+    overlay.style.visibility = "visible";
+    overlay.offsetHeight; // reflow
+    overlay.style.transition = "";
+    overlay.style.clipPath = "";
+    overlay.classList.add("open");
+    document.body.classList.add("locked");
+    setTimeout(() => $("#ovClose").focus({ preventScroll: true }), 50);
+  }
+  function closeOverlay() {
+    if (!overlay.classList.contains("open")) return;
+    hideTip();
+    const y = lastTab ? Math.max(0, Math.min(innerHeight, lastTab.getBoundingClientRect().bottom)) : innerHeight;
+    overlay.style.clipPath = `inset(${y}px 0 0 0)`;
+    overlay.classList.remove("open");
+    document.body.classList.remove("locked");
+    setTimeout(() => { overlay.style.clipPath = ""; overlay.style.visibility = ""; }, 760);
+    currentView = "chrono";
+    setSelected("chrono");
+    if (lastTab) lastTab.focus({ preventScroll: true });
+  }
+  $("#tabs").addEventListener("click", (e) => {
+    const b = e.target.closest(".tab");
+    if (!b) return;
+    if (b.dataset.view === "chrono") closeOverlay();
+    else openOverlay(b.dataset.view, b);
+  });
+  $("#ovClose").addEventListener("click", closeOverlay);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeOverlay(); });
+
+  // ---------- Language ----------
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => {
+    lang = b.dataset.lang;
+    try { localStorage.setItem("collserola-lang", lang); } catch (e) {}
+    renderText(); renderChrono();
+    if (currentView !== "chrono") renderOverlay(currentView);
+  }));
+
+  renderText();
+  renderChrono();
+})();
+</script>
+</body>
+</html>
