@@ -1,3 +1,7 @@
+![header](https://sorrego.net/wp-content/uploads/wildboars.jpg)
+
+[![DOI](https://zenodo.org/badge/1430906462.svg)](https://doi.org/10.5281/zenodo.23677415)
+
 # Collserola, One by One
 
 **A running count of every wild boar tested for African swine fever (ASF) in Catalonia, one mark per animal, updated with each official report until the killing stops.**
