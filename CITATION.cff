@@ -3,9 +3,9 @@ message: If you use this data visualization, please cite it as below.
 authors:
 - family-names: Orrego
   given-names: Santiago
-orcid: https://doi.org/10.5281/zenodo.23677416
+DOI: https://doi.org/10.5281/zenodo.23677416
 title:sorregoxyz/wild-boars-collserola: Collserola, One by One v1.0.0
 version: v1.0.0
 date-released: 2026-10-26
 
-DOI: Orrego, Santiago. 2026. Collserola, One by One (v1.0.0). https://github.com/sorregoxyz/wild-boars-collserola. DOI: 10.5281/zenodo.23677416
+Orrego, Santiago. 2026. Collserola, One by One (v1.0.0). https://github.com/sorregoxyz/wild-boars-collserola.
