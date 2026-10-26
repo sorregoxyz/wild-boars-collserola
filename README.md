@@ -222,6 +222,6 @@ To set it up again: **Settings → Pages → Build and deployment → Deploy fro
 
 Suggested citation:
 
-> Orrego, Santiago. 2026. *Collserola, One by One.* Interactive visualisation. https://sorregoxyz.github.io/wild-boars-collserola/
+> Orrego, Santiago. 2026. Collserola, One by One. Interactive visualization. https://sorregoxyz.github.io/wild-boars-collserola/ DOI: 10.5281/zenodo.23677416
 
 **Licence:** to be decided. Until a licence file is added, all rights are reserved by the author. The MAPA reports in `reports/` are public documents and remain subject to their original terms.
