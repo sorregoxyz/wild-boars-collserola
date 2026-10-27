@@ -129,6 +129,6 @@ The CSV keeps the figures as printed (for example, 1,408 for 19.03.2026). `data.
 
 Suggested citation:
 
-> Orrego, Santiago. 2026. Collserola, One by One. Interactive visualization. https://sorregoxyz.github.io/wild-boars-collserola/ DOI: 10.5281/zenodo.23677416
+> Orrego, Santiago. 2026. Collserola, One by One. Interactive visualization. https://sorregoxyz.github.io/wild-boars-collserola/
 
 **Licence:** to be decided. Until a licence file is added, all rights are reserved by the author. The MAPA reports in `reports/` are public documents and remain subject to their original terms.
