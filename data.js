@@ -9,7 +9,9 @@
 //   neg  : total negatives to date (null if the report gives none)
 //   cap  : negatives "capturados o abatidos sin sintomatología clínica" to date (null if not split)
 //   pas  : negatives "vigilancia pasiva" to date (null if not split)
-//   note : optional note shown next to the date and in the colophon
+//   note : optional note shown next to the date and in the colophon,
+//          with one text per language: { en: "…", es: "…", ca: "…" }
+//          (if a language is missing, the English text is shown)
 //
 // Before 5 January 2026 negatives are not split by category; they appear as "Unclassified".
 // On the first report with a split, the earlier unclassified total is subtracted from "pas",
@@ -18,10 +20,12 @@
 window.REPORTS = [
   { date: "2025-11-28", pos: 2,   neg: null, cap: null, pas: null,
     note: { en: "First detection: two fresh carcasses near the UAB campus, Cerdanyola del Vallès.",
-            es: "Primera detección: dos cadáveres frescos cerca del campus de la UAB, Cerdanyola del Vallès." } },
+            es: "Primera detección: dos cadáveres frescos cerca del campus de la UAB, Cerdanyola del Vallès.",
+            ca: "Primera detecció: dos cadàvers frescos a prop del campus de la UAB, Cerdanyola del Vallès." } },
   { date: "2025-12-02", pos: 9,   neg: null, cap: null, pas: null,
     note: { en: "The report gives 7 new cases but no running total; 9 = 2 + 7.",
-            es: "El informe da 7 casos nuevos pero no el total acumulado; 9 = 2 + 7." } },
+            es: "El informe da 7 casos nuevos pero no el total acumulado; 9 = 2 + 7.",
+            ca: "L’informe dona 7 casos nous però no el total acumulat; 9 = 2 + 7." } },
   { date: "2025-12-04", pos: 13,  neg: 37,   cap: null, pas: null },
   { date: "2025-12-12", pos: 16,  neg: 115,  cap: null, pas: null },
   { date: "2025-12-16", pos: 26,  neg: 175,  cap: null, pas: null },
@@ -29,7 +33,8 @@ window.REPORTS = [
   { date: "2025-12-29", pos: 29,  neg: 262,  cap: null, pas: null },
   { date: "2026-01-05", pos: 47,  neg: 530,  cap: 234,  pas: 296,
     note: { en: "First report to split negatives by category. Captured animals here include all captures to date; passive surveillance excludes the 262 earlier unclassified negatives.",
-            es: "Primer informe que desglosa los negativos. Los capturados incluyen todas las capturas hasta la fecha; la vigilancia pasiva excluye los 262 negativos anteriores sin clasificar." } },
+            es: "Primer informe que desglosa los negativos. Los capturados incluyen todas las capturas hasta la fecha; la vigilancia pasiva excluye los 262 negativos anteriores sin clasificar.",
+            ca: "Primer informe que desglossa els negatius. Els capturats inclouen totes les captures fins a la data; la vigilància passiva exclou els 262 negatius anteriors sense classificar." } },
   { date: "2026-01-12", pos: 60,  neg: 622,  cap: 300,  pas: 322 },
   { date: "2026-01-23", pos: 85,  neg: 749,  cap: 404,  pas: 345 },
   { date: "2026-01-29", pos: 103, neg: 833,  cap: 468,  pas: 365 },
@@ -38,22 +43,26 @@ window.REPORTS = [
   { date: "2026-02-17", pos: 162, neg: 1112, cap: 661,  pas: 451 },
   { date: "2026-02-26", pos: 195, neg: 1433, cap: 942,  pas: 491,
     note: { en: "The category becomes \"captured or shot without symptoms\". Part of this week's increase may be animals shot earlier and not counted before.",
-            es: "La categoría pasa a ser \"capturados o abatidos sin sintomatología clínica\". Parte del aumento puede corresponder a animales abatidos antes y no contabilizados." } },
+            es: "La categoría pasa a ser \"capturados o abatidos sin sintomatología clínica\". Parte del aumento puede corresponder a animales abatidos antes y no contabilizados.",
+            ca: "La categoria passa a ser “capturados o abatidos sin sintomatología clínica”. Part de l’augment pot correspondre a animals abatuts abans i no comptabilitzats." } },
   { date: "2026-03-05", pos: 216, neg: 1708, cap: 1176, pas: 532 },
   { date: "2026-03-12", pos: 227, neg: 1971, cap: 1408, pas: 563 },
   { date: "2026-03-19", pos: 232, neg: 2179, cap: 1578, pas: 601,
     note: { en: "The report repeats last week's captured figure (1,408), which does not add up to its own total of 2,179. Shown here as 1,578 (2,179 − 601). The area becomes \"restricted zones and surroundings\".",
-            es: "El informe repite la cifra de capturados de la semana anterior (1.408), que no cuadra con su propio total de 2.179. Aquí se usa 1.578 (2.179 − 601). El área pasa a ser \"zonas restringidas y sus alrededores\"." } },
+            es: "El informe repite la cifra de capturados de la semana anterior (1.408), que no cuadra con su propio total de 2.179. Aquí se usa 1.578 (2.179 − 601). El área pasa a ser \"zonas restringidas y sus alrededores\".",
+            ca: "L’informe repeteix la xifra de capturats de la setmana anterior (1.408), que no quadra amb el seu propi total de 2.179. Aquí s’utilitza 1.578 (2.179 − 601). L’àrea passa a ser “zonas restringidas y sus alrededores”." } },
   { date: "2026-03-26", pos: 238, neg: 2441, cap: 1794, pas: 650,
     note: { en: "The report's categories add up to 2,444, not the stated 2,441. Categories are used here.",
-            es: "Las categorías del informe suman 2.444, no los 2.441 indicados. Aquí se usan las categorías." } },
+            es: "Las categorías del informe suman 2.444, no los 2.441 indicados. Aquí se usan las categorías.",
+            ca: "Les categories de l’informe sumen 2.444, no els 2.441 indicats. Aquí s’utilitzen les categories." } },
   { date: "2026-04-01", pos: 241, neg: 2804, cap: 2108, pas: 696 },
   { date: "2026-04-09", pos: 252, neg: 3136, cap: 2396, pas: 740 },
   { date: "2026-04-16", pos: 268, neg: 3409, cap: 2630, pas: 779 },
   { date: "2026-04-22", pos: 284, neg: 3746, cap: 2936, pas: 810 },
   { date: "2026-04-28", pos: null, neg: null, cap: null, pas: null,
     note: { en: "Zoning update only (Implementing Regulation (EU) 2026/985). No figures.",
-            es: "Solo actualización de la zonificación (Reglamento de Ejecución (UE) 2026/985). Sin cifras." } },
+            es: "Solo actualización de la zonificación (Reglamento de Ejecución (UE) 2026/985). Sin cifras.",
+            ca: "Només actualització de la zonificació (Reglament d’Execució (UE) 2026/985). Sense xifres." } },
   { date: "2026-04-30", pos: 297, neg: 4181, cap: 3326, pas: 855 },
   { date: "2026-05-07", pos: 306, neg: 4552, cap: 3644, pas: 908 },
   { date: "2026-05-14", pos: 320, neg: 4934, cap: 3965, pas: 969 },

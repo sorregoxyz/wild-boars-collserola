@@ -16,7 +16,7 @@
     --cap: #F15060;
     --unc: #BB76CF;
     --muted: #9AA6B0;
-    --type: 0.80;   /* text size: 1 = original, smaller number = smaller text */
+    --type: 0.80;   /* text size: 1 */
     --d: 16px;      /* dot diameter */
     --g: 3.4px;     /* dot gap */
     --datecol: 172px;
@@ -134,8 +134,9 @@
   <div class="top">
     <h1 data-t="title"></h1>
     <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-lang="en" aria-pressed="true">EN</button>
-      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      <button type="button" data-lang="ca" aria-pressed="false" lang="ca">CAT</button>
+      <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false" lang="es">ES</button>
     </div>
   </div>
   <p class="intro" id="intro"></p>
@@ -225,6 +226,38 @@
           <ul>${d.notes}</ul>
         </div>`,
     },
+    ca: {
+      title: "Collserola, un a un",
+      intro: (d) => `Des que es va detectar la pesta porcina africana a Collserola el novembre de 2025, el Ministeri d’Agricultura d’Espanya publica una actualització setmanal amb el nombre de senglars analitzats. Aquesta peça els suma. Cada marca és un senglar, trobat mort al bosc o capturat i abatut com a part de la despoblació al voltant del brot envoltat de tanques. A data de ${d.date}, n’hi ha <b>${d.total}</b>. <b>${d.pos}</b> eren portadors del virus; gairebé tots es van trobar com a cadàvers o restes. Els altres <b>${d.neg}</b> van donar negatiu, i <b>${d.cap}</b> d’aquests eren animals sans abatuts sense símptomes. El recompte creix amb cada nou informe i només s’aturarà quan s’aturi la matança.`,
+      conventions: "Convencions",
+      explore: "Explora les dades",
+      chrono: "Cronològicament",
+      close: "Tanca ×",
+      colophon: "Colofó",
+      noFigures: "Aquest informe no inclou xifres",
+      boar: (n) => n === 1 ? "1 senglar" : `${n} senglars`,
+      reportOf: (d) => `Informe del ${d}`,
+      cat: {
+        pos: { name: "Positius", tab: "Positius", desc: "Casos confirmats de PPA (“casos/jabalíes positivos”).", big: "Senglars que van donar positiu" },
+        pas: { name: "Vigilància passiva", tab: "Vigilància passiva", desc: "Negatius. Cadàvers, restes o animals abatuts amb símptomes (“vigilancia pasiva”).", big: "Senglars trobats morts o malalts que van donar negatiu" },
+        cap: { name: "Capturats o abatuts sense símptomes", tab: "Capturats o abatuts, sense símptomes", desc: "Negatius. Animals sans retirats com a part de la reducció de la població (“capturados o abatidos sin sintomatología clínica”).", big: "Senglars abatuts sense símptomes" },
+        unc: { name: "Sense classificar", tab: "Sense classificar", desc: "Negatius. Notificats abans del 5 de gener de 2026, sense categoria.", big: "Senglars que van donar negatiu, sense categoria notificada" },
+      },
+      ovSub: (first, last) => `${first} a ${last} · una marca per senglar · els espais separen informes`,
+      colo: (d) => `
+        <div>
+          <h3>Font</h3>
+          <p>Ministerio de Agricultura, Pesca y Alimentación (MAPA), “Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña”, ${d.n} informes, del ${d.first} al ${d.last}. <a href="https://www.mapa.gob.es/es/ganaderia/temas/sanidad-animal-higiene-ganadera/sanidad-animal/enfermedades/peste-porcina-africana/peste_porcina_africana" target="_blank" rel="noopener">MAPA, pesta porcina africana</a>.</p>
+          <h3>Mètode</h3>
+          <p>Cada informe dona totals acumulats “fins a la data”. Aquesta peça mostra el que cada informe afegeix a l’anterior. Les dates dels informes són irregulars fins al març de 2026 i setmanals després. Els negatius es compten a les zones restringides i, des del 19 de març de 2026, també als “seus voltants”.</p>
+          <h3>Crèdits</h3>
+          <p>Recerca i disseny: Santiago Orrego. Dades i codi: <a href="https://github.com/sorregoxyz/wild-boars-collserola" target="_blank" rel="noopener">github.com/sorregoxyz/wild-boars-collserola</a>.</p>
+        </div>
+        <div>
+          <h3>Notes sobre els informes</h3>
+          <ul>${d.notes}</ul>
+        </div>`,
+    },
     es: {
       title: "Collserola, uno a uno",
       intro: (d) => `Desde que se detectó la peste porcina africana en Collserola en noviembre de 2025, el Ministerio de Agricultura publica una actualización semanal con el número de jabalíes analizados. Esta pieza los suma. Cada marca es un jabalí, hallado muerto en el bosque o capturado y abatido como parte de la despoblación alrededor del brote vallado. A fecha de ${d.date}, son <b>${d.total}</b>. <b>${d.pos}</b> portaban el virus; casi todos se encontraron como cadáveres o restos. Los otros <b>${d.neg}</b> dieron negativo, y <b>${d.cap}</b> de ellos eran animales sanos abatidos sin síntomas. El recuento crece con cada nuevo informe y solo se detendrá cuando cese la matanza.`,
@@ -281,10 +314,20 @@
   const lastWithFigures = [...reports].reverse().find(r => r.hasFigures);
 
   // ---------- Helpers ----------
-  let lang = "en";
-  try { const s = localStorage.getItem("collserola-lang"); if (s === "es" || s === "en") lang = s; } catch (e) {}
-  const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, lang === "es" ? "." : ",");
-  const longDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(lang === "es" ? "es-ES" : "en-GB", { day: "numeric", month: "long", year: "numeric" });
+  // Language: a choice saved with the CAT/EN/ES buttons wins; otherwise the first
+  // supported language in the browser's preference list; otherwise English.
+  const LANGS = ["ca", "en", "es"];
+  const LOCALES = { ca: "ca-ES", en: "en-GB", es: "es-ES" };
+  function initialLang() {
+    try { const saved = localStorage.getItem("collserola-lang"); if (LANGS.includes(saved)) return saved; } catch (e) {}
+    const prefs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ""];
+    for (const l of prefs) { const base = String(l).toLowerCase().split("-")[0]; if (LANGS.includes(base)) return base; }
+    return "en";
+  }
+  let lang = initialLang();
+  const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, lang === "en" ? "," : ".");
+  const longDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString(LOCALES[lang], { day: "numeric", month: "long", year: "numeric" });
+  const noteText = (r) => r.note[lang] || r.note.en;
   const $ = (s) => document.querySelector(s);
   const dotsHTML = (n) => "<i></i>".repeat(n);
 
@@ -308,7 +351,7 @@
 
     $("#legend").innerHTML = CATS.map(c => `<li style="--c:${COLORS[c]}"><b>${t.cat[c].name}</b>${t.cat[c].desc}</li>`).join("");
 
-    const notes = reports.filter(r => r.note).map(r => `<li><b>${r.label}</b> ${r.note[lang]}</li>`).join("");
+    const notes = reports.filter(r => r.note).map(r => `<li><b>${r.label}</b> ${noteText(r)}</li>`).join("");
     $("#colo").innerHTML = t.colo({ n: reports.length, first: reports[0].label, last: reports[reports.length - 1].label, notes });
   }
 
@@ -350,7 +393,7 @@
     const noteBtn = e.target.closest && e.target.closest(".note-btn");
     if (noteBtn) {
       const r = reports[+noteBtn.dataset.note];
-      hideTip(); showTip(`${r.label}<br><span class="note">${r.note[lang]}</span>`, e.clientX, e.clientY);
+      hideTip(); showTip(`${r.label}<br><span class="note">${noteText(r)}</span>`, e.clientX, e.clientY);
       return;
     }
     if (!seg) { hideTip(); return; }

@@ -8,7 +8,11 @@
 
 🔗 **Live:** https://sorregoxyz.github.io/wild-boars-collserola/
 
-*Collserola, uno a uno.* Un recuento de cada jabalí analizado por peste porcina africana en Cataluña, una marca por animal, que se actualiza con cada informe oficial hasta que cese la matanza. La pieza está disponible en inglés y en castellano.
+*Collserola, un a un.* Un recompte de cada senglar analitzat per pesta porcina africana a Catalunya, una marca per animal, que s’actualitza amb cada informe oficial fins que s’aturi la matança.
+
+*Collserola, uno a uno.* Un recuento de cada jabalí analizado por peste porcina africana en Cataluña, una marca por animal, que se actualiza con cada informe oficial hasta que cese la matanza.
+
+The piece is available in **Catalan, English and Spanish**. It opens in the visitor's browser language (falling back to English) and remembers the choice made with the CAT / EN / ES buttons.
 
 ---
 
@@ -92,7 +96,7 @@ Other things to keep in mind:
 
 ```
 wild-boars-collserola/
-├── index.html                    The page: layout, styles, interaction, EN/ES text
+├── index.html                    The page: layout, styles, interaction, CA/EN/ES text
 ├── data.js                       Cumulative figures from each report (edit this weekly)
 ├── ppa_catalunya_informes.csv    Derived dataset: one row per report, with notes
 ├── reports/                      Original MAPA PDFs, named YYYY-MM-DD.pdf
