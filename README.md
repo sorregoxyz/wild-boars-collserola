@@ -135,4 +135,4 @@ Suggested citation:
 
 > Orrego, Santiago. 2026. Collserola, One by One. Interactive visualization. https://sorregoxyz.github.io/wild-boars-collserola/
 
-**Licence:** to be decided. Until a licence file is added, all rights are reserved by the author. The MAPA reports in `reports/` are public documents and remain subject to their original terms.
+**Licence:** CC0 1.0 Universal. The MAPA reports in `reports/` are public documents and remain subject to their original terms.
