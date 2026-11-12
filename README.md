@@ -1,4 +1,4 @@
-![header](https://sorrego.net/wp-content/uploads/wildboars.jpg)
+![header](https://github.com/sorregoxyz/wild-boars-collserola/blob/main/support-files/header.jpeg?raw=true)
 
 [![DOI](https://zenodo.org/badge/1430906462.svg)](https://doi.org/10.5281/zenodo.23677415)
 
