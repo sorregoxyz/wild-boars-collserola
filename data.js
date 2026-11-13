@@ -91,4 +91,8 @@ window.REPORTS = [
   { date: "2026-10-22", pos: 419, neg: 14077, cap: 11990, pas: 2087 },
   { date: "2026-10-29", pos: 423, neg: 14313, cap: 12184, pas: 2129 },
   { date: "2026-11-05", pos: 424, neg: 14689, cap: 12505, pas: 2184 },
+  { date: "2026-11-12", pos: 429, neg: 15055, cap: 12795, pas: 2262,
+    note: { en: "The report's categories add up to 15,057, not the stated 15,055. Categories are used here. The text gives 81 foci; the map caption, 82.",
+            es: "Las categorías del informe suman 15.057, no los 15.055 indicados. Aquí se usan las categorías. El texto indica 81 focos; el pie del mapa, 82.",
+            ca: "Les categories de l’informe sumen 15.057, no els 15.055 indicats. Aquí s’utilitzen les categories. El text indica 81 focus; el peu del mapa, 82." } },
 ];

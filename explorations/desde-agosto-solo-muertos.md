@@ -1,34 +1,34 @@
 # Desde agosto, el virus solo aparece en los muertos
 
-*Exploración de datos · 28 informes del MAPA, 30.04.2026 a 05.11.2026 · elaborada el 05.11.2026*
+*Exploración de datos · 29 informes del MAPA, 30.04.2026 a 12.11.2026 · actualizada el 13.11.2026*
 
-**El último positivo en un jabalí capturado o abatido aparece en el informe del 6 de agosto de 2026. Desde entonces, los 49 positivos notificados en 13 informes se han hallado ya muertos, casi siempre como restos, mientras se capturaban o abatían 3.740 jabalíes sanos sin ningún positivo.**
+**El último positivo en un jabalí capturado o abatido aparece en el informe del 6 de agosto de 2026. Desde entonces, los 54 positivos notificados en 14 informes se han hallado ya muertos, casi siempre como restos, mientras se capturaban o abatían 4.030 jabalíes sanos sin ningún positivo.**
 
 ## Dos periodos
 
 | Periodo | Informes | Positivos nuevos | Positivos capturados o abatidos | Positivos hallados muertos | Capturados o abatidos negativos |
 |---|---:|---:|---:|---:|---:|
 | 30.04 a 06.08.2026 | 15 | 91 | **11** | 79 | 5.829 |
-| 13.08 a 05.11.2026 | 13 | 49 | **0** | 49 | 3.740 |
+| 13.08 a 12.11.2026 | 14 | 54 | **0** | 54 | 4.030 |
 
-En el primer periodo hay, además, 1 positivo abatido con síntomas (25.06), que no entra en ninguna de las dos columnas. El periodo empieza el 30 de abril porque es el primer informe que separa con cifras los positivos capturados; los informes de febrero y marzo los agrupan sin desglose (ver `positivos_por_via_de_deteccion.md`).
+En el primer periodo hay además 1 positivo abatido con síntomas (25.06), que no entra en ninguna de las dos columnas. El periodo empieza el 30 de abril porque es el primer informe que separa con cifras los positivos capturados; los informes de febrero y marzo los agrupan sin desglose (ver `positivos_por_via_de_deteccion.md`).
 
 ## Lo que muestran los datos
 
 1. **Los positivos en animales vivos se concentran en primavera y verano.** Por mes de informe: abril 2, mayo 0, junio 3, julio 5 y agosto 1 (el 6 de agosto). Después, ninguno.
-2. **Desde el 13 de agosto, 3.740 capturas sin un solo positivo.** La captura sigue a un ritmo de 150 a 450 animales por semana.
+2. **Desde el 13 de agosto, 4.030 capturas sin un solo positivo.** La captura sigue a un ritmo de 150 a 450 animales por semana.
 3. **Cambia el tipo de hallazgo.** Hasta mediados de agosto, los informes hablan de "cadáveres", a veces frescos. Desde el 3 de septiembre, casi todos los positivos son "restos de cadáveres".
 4. **Los casos siguen dentro del perímetro vallado**, en los mismos 13 municipios desde el 14 de mayo.
 
 ## Interpretación
 
-Los datos son coherentes con un virus que ya circula poco entre los jabalíes vivos. Llevan tres meses sin aparecer animales vivos infectados, y los positivos que siguen saliendo son restos, probablemente de animales muertos semanas o incluso meses antes. La PCR detecta el material genético del virus mucho después de la muerte, así que el recuento semanal de positivos mide hoy sobre todo la intensidad de la búsqueda de cadáveres, más que la transmisión actual.
+Los datos son coherentes con un virus que ya circula poco entre los jabalíes vivos. Llevan tres meses sin aparecer animales vivos infectados, y los positivos que siguen saliendo son restos, probablemente de animales muertos semanas o meses antes. La PCR detecta el material genético del virus mucho después de la muerte, así que el recuento semanal de positivos mide hoy sobre todo la intensidad de la búsqueda de cadáveres, más que la transmisión actual.
 
-Para el debate sobre la despoblación, el dato es este: desde agosto, la captura ha asesinado 3.740 jabalíes sin encontrar ninguna infección, mientras el virus solo ha aparecido en restos.
+Para el debate sobre la despoblación, el dato es este: desde agosto, la captura ha retirado 4.030 jabalíes sin encontrar ninguna infección, mientras el virus solo aparecía en restos.
 
 ## Precauciones
 
-- **Que no haya positivos no demuestra que no haya virus.** La PPA mata deprisa, así que un jabalí infectado tiene más probabilidades de aparecer muerto que de caer en una trampa. (Por eso es importante determinar el estado en el que los restos se encontraron).
+- **Que no haya positivos no demuestra que no haya virus.** La PPA mata deprisa, así que un jabalí infectado tiene más probabilidades de aparecer muerto que de caer en una trampa.
 - **Dónde se captura importa.** Los informes no dicen cuántas capturas se hacen dentro del núcleo vallado y cuántas en la zona tampón o en "los alrededores", donde no se esperarían infecciones.
 - **La clasificación depende de la redacción de los informes.** Es fiable para este periodo porque las descripciones son explícitas, pero no deja de ser una lectura del texto, no un dato desglosado por el Ministerio.
 - **Preguntas para la administración:** ¿cuántos positivos hay en animales capturados desde agosto?, ¿dónde se hacen las capturas?, ¿qué resultado permitiría reducirlas?
@@ -65,9 +65,10 @@ Para el debate sobre la despoblación, el dato es este: desde agosto, la captura
 | 22.10.2026 | 9 | Restos de cadáveres | 0 | 343 |
 | 29.10.2026 | 4 | Restos de cadáveres | 0 | 194 |
 | 05.11.2026 | 1 | Restos de 1 cadáver | 0 | 321 |
+| 12.11.2026 | 5 | Restos de cadáveres (2 en Sant Quirze del Vallès, 3 en Molins de Rei) | 0 | 290 |
 
 ## Fuentes y método
 
-- Informes del MAPA, *Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña*, 30.04.2026 a 05.11.2026, en `reports/`.
+- Informes del MAPA, *Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña*, 30.04.2026 a 12.11.2026, en `reports/`.
 - La clasificación de cada positivo sigue la de `positivos_por_via_de_deteccion.md`.
 - Los capturados o abatidos negativos de cada informe son la diferencia entre la cifra acumulada de ese informe y la del anterior (`data.js`).
