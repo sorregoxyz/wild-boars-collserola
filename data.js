@@ -95,4 +95,8 @@ window.REPORTS = [
     note: { en: "The report's categories add up to 15,057, not the stated 15,055. Categories are used here. The text gives 81 foci; the map caption, 82.",
             es: "Las categorías del informe suman 15.057, no los 15.055 indicados. Aquí se usan las categorías. El texto indica 81 focos; el pie del mapa, 82.",
             ca: "Les categories de l’informe sumen 15.057, no els 15.055 indicats. Aquí s’utilitzen les categories. El text indica 81 focus; el peu del mapa, 82." } },
+  { date: "2026-11-19", pos: 448, neg: 15308, cap: 12978, pas: 2305,
+    note: { en: "19 new positives, all remains: 17 dead for more than 5 months, 2 for 6 to 16 weeks. The Ministry attributes the rise to an intensified search for remains. The report's categories add up to 15,283, not the stated 15,308. Categories are used here.",
+            es: "19 positivos nuevos, todos restos: 17 con más de 5 meses de muerte y 2 de entre 6 y 16 semanas. El Ministerio atribuye el aumento a la intensificación de la búsqueda de restos. Las categorías del informe suman 15.283, no los 15.308 indicados. Aquí se usan las categorías.",
+            ca: "19 positius nous, tots restes: 17 amb més de 5 mesos de mort i 2 d’entre 6 i 16 setmanes. El Ministeri atribueix l’augment a la intensificació de la cerca de restes. Les categories de l’informe sumen 15.283, no els 15.308 indicats. Aquí s’utilitzen les categories." } },
 ];
