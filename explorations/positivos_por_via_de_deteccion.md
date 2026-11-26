@@ -1,6 +1,6 @@
 # Positivos de peste porcina africana en Collserola: cómo se encontraron
 
-Desglose de los 448 jabalíes positivos según los informes del Ministerio de Agricultura (MAPA), 28.11.2025 a 19.11.2026.
+Desglose de los 458 jabalíes positivos según los informes del Ministerio de Agricultura (MAPA), 28.11.2025 a 26.11.2026.
 
 ## Resumen
 
@@ -8,25 +8,25 @@ Los informes **no desglosan los positivos acumulados** por vía de detección, c
 
 | Cómo se encontraron | Positivos | % |
 |---|---:|---:|
-| Hallados muertos (cadáveres, restos o colisiones de tráfico) | 309 | 69 % |
+| Hallados muertos (cadáveres, restos o colisiones de tráfico) | 319 | 70 % |
 | Capturados o abatidos | 11 | 2 % |
 | Abatidos con síntomas | 2 | 0,4 % |
-| Mezclado: el informe agrupa hallados y capturados o abatidos sin desglose | 93 | 21 % |
+| Mezclado: el informe agrupa hallados y capturados o abatidos sin desglose | 93 | 20 % |
 | Sin especificar | 33 | 7 % |
-| **Total** | **448** | |
+| **Total** | **458** | |
 
 ## Lo que se puede afirmar
 
-- **Al menos 309 positivos (69 %) se hallaron ya muertos.** Incluye 5 jabalíes muertos por colisión con vehículos (19.03, 04.06, 25.06, 13.08 y 24.09).
+- **Al menos 319 positivos (70 %) se hallaron ya muertos.** Incluye 5 jabalíes muertos por colisión con vehículos (19.03, 04.06, 25.06, 13.08 y 24.09).
 - **Al menos 13 positivos fueron capturados o abatidos.** De ellos, 2 mostraban síntomas. De los otros 11, los informes solo dicen expresamente "sin síntomas" en 3 casos (11.06 y 02.07); en el resto indican "capturado" o "abatido en transecto" sin más detalle.
 - **126 positivos (28 %) no se pueden clasificar** con la información publicada. Casi tres cuartas partes (93) corresponden a tres informes de febrero y marzo de 2026 (06.02, 26.02 y 05.03), cuando la captura de animales ya estaba en marcha.
 - **Desde agosto de 2026, todos los positivos nuevos son cadáveres, restos o colisiones.** Desde el 13 de agosto, la mayoría son "restos de cadáveres".
 
 ## Por qué importa
 
-Frente a 12.978 negativos capturados o abatidos sin síntomas (a 19.11.2026), entre 11 y 137 positivos pertenecen a esa vía de detección. La positividad entre los animales capturados se sitúa, por tanto, entre el 0,1 % y, en el peor caso, el 1,0 %. En la vigilancia pasiva (cadáveres, restos y animales con síntomas) es de aproximadamente uno de cada seis.
+Frente a 13.183 negativos capturados o abatidos sin síntomas (a 26.11.2026), entre 11 y 137 positivos pertenecen a esa vía de detección. La positividad entre los animales capturados se sitúa, por tanto, entre el 0,1 % y, en el peor caso, el 1,0 %. En la vigilancia pasiva (cadáveres, restos y animales con síntomas) es de aproximadamente uno de cada seis.
 
-La cifra exacta solo la puede dar la administración. Pregunta sugerida: *¿Cuántos de los 448 positivos eran animales capturados o abatidos, y cuántos cadáveres o restos hallados en el medio?*
+La cifra exacta solo la puede dar la administración. Pregunta sugerida: *¿Cuántos de los 458 positivos eran animales capturados o abatidos, y cuántos cadáveres o restos hallados en el medio?*
 
 ## Detalle por informe
 
@@ -85,14 +85,15 @@ La cifra exacta solo la puede dar la administración. Pregunta sugerida: *¿Cuá
 | 05.11.2026 | 1 | Restos de 1 cadáver | Hallados muertos (1) |
 | 12.11.2026 | 5 | Restos de cadáveres (2 en Sant Quirze del Vallès, 3 en Molins de Rei) | Hallados muertos (5) |
 | 19.11.2026 | 19 | Restos de cadáveres: 17 con más de 5 meses de muerte y 2 de entre 6 y 16 semanas | Hallados muertos (19) |
+| 26.11.2026 | 10 | Restos de cadáveres y 1 cadáver entero (Barcelona) | Hallados muertos (10) |
 
 ## Método
 
-- **Fuente:** el párrafo de casos nuevos de cada informe del MAPA, *Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña* (54 informes, 28.11.2025 a 19.11.2026). El informe del 28.04.2026 solo actualiza la zonificación y no incluye cifras.
+- **Fuente:** el párrafo de casos nuevos de cada informe del MAPA, *Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña* (55 informes, 28.11.2025 a 26.11.2026). El informe del 28.04.2026 solo actualiza la zonificación y no incluye cifras.
 - **"Hallados muertos"** agrupa cadáveres, restos y animales muertos por colisión con vehículos.
 - **"Capturados o abatidos"** agrupa animales capturados en trampas o abatidos en transectos sin que el informe mencione síntomas.
 - **"Mezclado"**: el informe da un total que reúne categorías distintas sin indicar cuántos hay de cada una.
 - **Cuando un informe da cifras parciales** (por ejemplo, "mayoría cadáveres; 2 capturados"), los casos no especificados se cuentan como hallados muertos.
-- Los totales cuadran con los positivos acumulados del último informe (448).
+- Los totales cuadran con los positivos acumulados del último informe (458).
 
 *Elaborado a partir de los datos de [Collserola, uno a uno](https://sorregoxyz.github.io/wild-boars-collserola/).*

@@ -1,22 +1,22 @@
 # Desde agosto, el virus solo aparece en los muertos
 
-*Exploración de datos · 30 informes del MAPA, 30.04.2026 a 19.11.2026 · actualizada el 20.11.2026*
+*Exploración de datos · 31 informes del MAPA, 30.04.2026 a 26.11.2026 · actualizada el 26.11.2026*
 
-**El último positivo en un jabalí capturado o abatido aparece en el informe del 6 de agosto de 2026. Desde entonces, los 73 positivos notificados en 15 informes se han hallado ya muertos, casi siempre como restos, mientras se capturaban o abatían 4.213 jabalíes sanos sin ningún positivo.**
+**El último positivo en un jabalí capturado o abatido aparece en el informe del 6 de agosto de 2026. Desde entonces, los 83 positivos notificados en 16 informes se han hallado ya muertos, casi siempre como restos, mientras se capturaban o abatían 4.418 jabalíes sanos sin ningún positivo.**
 
 ## Dos periodos
 
 | Periodo | Informes | Positivos nuevos | Positivos capturados o abatidos | Positivos hallados muertos | Capturados o abatidos negativos |
 |---|---:|---:|---:|---:|---:|
 | 30.04 a 06.08.2026 | 15 | 91 | **11** | 79 | 5.829 |
-| 13.08 a 19.11.2026 | 15 | 73 | **0** | 73 | 4.213 |
+| 13.08 a 26.11.2026 | 16 | 83 | **0** | 83 | 4.418 |
 
 En el primer periodo hay, además, 1 positivo abatido con síntomas (25.06), que no entra en ninguna de las dos columnas. El periodo empieza el 30 de abril porque es el primer informe que separa con cifras los positivos capturados; los informes de febrero y marzo los agrupan sin desglose (ver `positivos_por_via_de_deteccion.md`).
 
 ## Lo que muestran los datos
 
 1. **Los positivos en animales vivos se concentran en primavera y verano.** Por mes de informe: abril 2, mayo 0, junio 3, julio 5 y agosto 1 (el 6 de agosto). Después, ninguno.
-2. **Desde el 13 de agosto, 4.213 capturas sin un solo positivo.** La captura sigue a un ritmo de 150 a 450 animales por semana.
+2. **Desde el 13 de agosto, 4.418 capturas sin un solo positivo.** La captura sigue a un ritmo de 150 a 450 animales por semana.
 3. **Cambia el tipo de hallazgo.** Hasta mediados de agosto, los informes hablan de "cadáveres", a veces frescos. Desde el 3 de septiembre, casi todos los positivos son "restos de cadáveres".
 4. **El propio Ministerio data ahora los restos, y son antiguos.** El informe del 19.11.2026 suma 19 positivos, el mayor número semanal desde marzo, pero todos son restos: 17 de animales muertos hace más de cinco meses (antes de mediados de junio) y 2 de animales muertos entre 6 y 16 semanas antes (entre finales de julio y principios de octubre). El informe atribuye el aumento a que se ha "intensificado la búsqueda de restos en zonas donde ya se habían detectado casos".
 5. **Los casos siguen dentro del perímetro vallado**, en los mismos 13 municipios desde el 14 de mayo.
@@ -27,7 +27,7 @@ Los datos son coherentes con un virus que ya circula poco entre los jabalíes vi
 
 El informe del 19 de noviembre lo confirma con los datos del propio Ministerio. Es la primera vez que los informes datan los restos, y la datación coincide con esta lectura: el pico de positivos de esa semana corresponde a animales muertos en primavera y verano, y el Ministerio lo explica por una búsqueda más intensa, no por nuevos contagios.
 
-Para el debate sobre la despoblación, el dato es este: desde agosto, la captura ha asesinado 4.213 jabalíes sin encontrar ninguna infección, mientras el virus solo ha aparecido en restos.
+Para el debate sobre la despoblación, el dato es este: desde agosto, la captura ha asesinado 4.418 jabalíes sin encontrar ninguna infección, mientras el virus solo ha aparecido en restos.
 
 ## Precauciones
 
@@ -70,9 +70,10 @@ Para el debate sobre la despoblación, el dato es este: desde agosto, la captura
 | 05.11.2026 | 1 | Restos de 1 cadáver | 0 | 321 |
 | 12.11.2026 | 5 | Restos de cadáveres (2 en Sant Quirze del Vallès, 3 en Molins de Rei) | 0 | 290 |
 | 19.11.2026 | 19 | Restos de cadáveres: 17 con más de 5 meses de muerte y 2 de entre 6 y 16 semanas | 0 | 183 |
+| 26.11.2026 | 10 | Restos de cadáveres y 1 cadáver entero (Barcelona) | 0 | 205 |
 
 ## Fuentes y método
 
-- Informes del MAPA, *Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña*, 30.04.2026 a 19.11.2026, en `reports/`.
+- Informes del MAPA, *Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña*, 30.04.2026 a 26.11.2026, en `reports/`.
 - La clasificación de cada positivo sigue la de `positivos_por_via_de_deteccion.md`.
 - Los capturados o abatidos negativos de cada informe son la diferencia entre la cifra acumulada de ese informe y la del anterior (`data.js`).

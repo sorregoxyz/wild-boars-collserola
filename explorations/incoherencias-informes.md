@@ -1,6 +1,6 @@
 # Lo que no cuadra: incoherencias en los informes del MAPA
 
-*Exploración de datos · 54 informes del MAPA, 28.11.2025 a 19.11.2026 · actualizada el 20.11.2026*
+*Exploración de datos · 55 informes del MAPA, 28.11.2025 a 26.11.2026 · actualizada el 26.11.2026*
 
 **En casi un año de informes semanales sobre la peste porcina africana en Cataluña hay cuatro errores aritméticos, una cifra copiada de la semana anterior, al menos cuatro cambios de categoría o de área sin explicación y ningún desglose de los positivos por vía de detección.** Ninguna de estas incoherencias altera por sí sola el orden de magnitud del recuento. Juntas, muestran que los informes no son un registro estable, sino un recuento que se rehace cada semana y cuyas reglas cambian por el camino sin aviso.
 
@@ -25,6 +25,7 @@
 - **26.03.2026.** 1.794 capturados + 650 de vigilancia pasiva = 2.444, no los 2.441 declarados. Diferencia de 3 animales.
 - **12.11.2026.** 12.795 capturados + 2.262 de vigilancia pasiva = 15.057, no los 15.055 declarados. Diferencia de 2 animales.
 - **19.11.2026.** 12.978 capturados + 2.305 de vigilancia pasiva = 15.283, no los 15.308 declarados. Diferencia de 25 animales, y en sentido contrario a la de la semana anterior: ahora el total declarado supera a la suma de las categorías.
+- **26.11.2026.** El informe vuelve a cuadrar (13.183 + 2.359 = 15.542), pero no corrige el del 19.11.2026 ni aclara cuál de sus dos cifras era la correcta.
 
 Las diferencias de 2, 3 y 25 animales son pequeñas frente al total, pero indican que el total y el desglose se calculan por separado y nadie comprueba que coincidan. La de marzo afecta a 170 animales y, de no corregirse, haría que esa semana pareciera no tener capturas.
 
@@ -54,7 +55,7 @@ Hasta marzo, los negativos se refieren a la zona infectada. Desde el 19.03.2026,
 
 Los informes desglosan los negativos por vía de detección, pero nunca los positivos. Solo describen los casos nuevos de cada semana, a veces con cifras ("2 capturados"), a veces con una lista de tipos sin números ("cadáveres, restos y una colisión") y a veces sin ningún dato. De los 448 positivos acumulados, 126 no se pueden clasificar con la información publicada. Es justo el dato que permitiría saber si la captura de animales sanos encuentra el virus.
 
-Hay una novedad que va en la buena dirección: el informe del 19.11.2026 es el primero que data los restos positivos (17 con más de cinco meses de muerte y 2 de entre 6 y 16 semanas) y que explica un aumento de casos por el esfuerzo de búsqueda. Es el tipo de información que permite leer el recuento semanal como lo que es.
+Hay una novedad que va en la buena dirección: el informe del 19.11.2026 es el primero que data los restos positivos (17 con más de cinco meses de muerte y 2 de entre 6 y 16 semanas) y que explica un aumento de casos por el esfuerzo de búsqueda. Es el tipo de información que permite leer el recuento semanal como lo que es. El informe siguiente, del 26.11.2026, ya no data los restos: la datación no se ha consolidado como práctica.
 
 ## 6. Una palabra que agrupa
 
@@ -66,7 +67,7 @@ Ninguna de estas incoherencias, por separado, es un escándalo. Son el tipo de e
 
 - **El recuento es un ensamblaje, no un registro.** Las cifras se rehacen cada semana, las categorías cambian de nombre y de alcance, el área se amplía, y los cambios no se anuncian. Quien lee los informes de uno en uno no los ve; solo aparecen cuando se leen en serie.
 - **La precisión es asimétrica.** Los negativos se cuentan al animal y se desglosan por categoría; los positivos, que son el dato epidemiológico, no se desglosan nunca. El informe es más preciso sobre los animales que mata que sobre dónde encuentra el virus.
-- **La rendición de cuentas depende de la serie.** Una medida que ha supuesto la muerte de casi 13.000 animales sanos se documenta en notas semanales sin un registro consolidado, sin correcciones publicadas y sin definiciones estables. Reconstruir la serie, como hace esta visualización, es la única forma de ver la medida en su conjunto.
+- **La rendición de cuentas depende de la serie.** Una medida que ha supuesto la muerte de más de 13.000 animales sanos se documenta en notas semanales sin un registro consolidado, sin correcciones publicadas y sin definiciones estables. Reconstruir la serie, como hace esta visualización, es la única forma de ver la medida en su conjunto.
 
 ## Preguntas para la administración
 
@@ -74,12 +75,12 @@ Ninguna de estas incoherencias, por separado, es un escándalo. Son el tipo de e
 2. ¿Hay un registro consolidado de la serie, con las correcciones aplicadas?
 3. ¿Qué abarca "los alrededores" de las zonas restringidas, y cuántas capturas se hacen dentro y fuera del perímetro vallado?
 4. ¿El salto de 281 capturados del 26.02.2026 incluye animales abatidos en semanas anteriores?
-5. ¿Cuántos de los 448 positivos son animales capturados o abatidos, y cuántos cadáveres o restos?
+5. ¿Cuántos de los 458 positivos son animales capturados o abatidos, y cuántos cadáveres o restos?
 6. ¿Cuántos focos había a 12.11.2026: 81 u 82?
 7. ¿Cuál es el total correcto de negativos a 19.11.2026: 15.283 o 15.308?
 
 ## Fuentes y método
 
-- Informes del MAPA, *Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña*, 28.11.2025 a 19.11.2026, en `reports/`.
+- Informes del MAPA, *Actualización de la situación de Peste Porcina Africana en jabalíes silvestres en Cataluña*, 28.11.2025 a 26.11.2026, en `reports/`.
 - Las sumas se han comprobado informe a informe a partir del párrafo de cifras de cada nota. Los datos, con las correcciones aplicadas y documentadas, están en `data.js`; las cifras tal como se publicaron, en `ppa_catalunya_informes.csv`.
 - Relacionado: `positivos_por_via_de_deteccion.md` y `desde-agosto-solo-muertos.md`.
